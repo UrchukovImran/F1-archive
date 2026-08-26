@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hi</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .box {
+            box-shadow: 0 0 10px rgba(128, 128, 128, 0.329);
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            margin: 100px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .text-1 {
+            text-align: center;
+            font-size: 40px;
+        }
+
+        .but {
+            width: 90%;
+            height: 70px;
+            margin-top: 50px;
+        }
+
+        .but button {
+            font-size: 20px;
+            font-weight: 700;
+            width: 100%;
+            height: 100%;
+            border: 3px solid black;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(128, 128, 128, 0.671);
+            transition: opacity 0.3s, box-shadow 0.3s, transform 0.3s;
+        }
+
+        .but button:hover {
+            opacity: 0.6;
+            transition: all 0.3s;
+        }
+
+        .but button:active {
+            box-shadow: inset 0 0 5px rgba(128, 128, 128, 0.863);
+            transition: all 0.3s;
+            opacity: 1;
+            transform: scale(0.9);
+        }
+
+        .box-adaptive {
+            display: none;
+        }
+
+        @media (max-width: 576px) {
+            .box {
+                display: none;
+            }
+
+            .box-adaptive {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+                width: 300px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px gray;
+                margin: 300px auto;
+            }
+
+            .box-adaptive .but-adaptive {
+                margin-top: 30px;
+            }
+
+            .box-adaptive .but-adaptive {
+                width: 80%;
+                height: 30px;
+            }
+
+            .box-adaptive .but-adaptive button {
+                width: 100%;
+                height: 100%;
+                font-size: 13px;
+                font-weight: 700;
+                border: 2px solid black;
+                border-radius: 10px;
+                background-color: white;
+                box-shadow: 0 0 10px rgba(128, 128, 128, 0.671);
+                transition: opacity 0.3s, box-shadow 0.3s, transform 0.3s;
+            }
+
+            .but-adaptive button:active {
+                box-shadow: inset 0 0 5px rgba(128, 128, 128, 0.863);
+                transition: all 0.3s;
+                opacity: 1;
+                transform: scale(0.9);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <main>
+            <div class="box">
+                <div class="text-1">This page is still in development!</div>
+                <div class="but"><button onclick="window.location.href='index.html';">HOME</button></div>
+            </div>
+            <div class="box-adaptive">
+                <div class="text-1-adaptive">This page is still in development!</div>
+                <div class="but-adaptive"><button oclick="window.location.href='index.html';">HOME</button></div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
