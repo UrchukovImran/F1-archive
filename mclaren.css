@@ -1,0 +1,1484 @@
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'SbB Papaya';
+    src: url('SbBPapaya.woff2') format('woff2'),
+        url('SbBPapaya.woff') format('woff');
+}
+
+
+
+body {
+    background-color: rgb(21, 21, 46);
+    font-weight: 200;
+    cursor: default;
+    font-family: 'SbB Papaya', sans-serif;
+    padding-top: 100px;
+    color: wheat;
+    animation: appereance-anim 2s ease 1;
+}
+
+@keyframes appereance-anim {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+
+header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 65px;
+    background-color: #ff800056;
+    backdrop-filter: blur(6px);
+    z-index: 10;
+    animation: top-bar-anim 2s ease 1;
+    box-sizing: border-box;
+}
+
+@keyframes top-bar-anim {
+
+    0% {
+        top: -70px;
+    }
+
+    100% {
+        top: 0;
+    }
+
+}
+
+
+
+@keyframes under-bar-line-anim {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        width: 100%;
+    }
+
+}
+
+.top-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    vertical-align: top;
+    position: relative;
+}
+
+.under-bar-line {
+    width: 100%;
+    margin: 0 auto;
+    box-shadow: 0 0 10px #FF8000;
+    border: 3px solid 	#FF8000;
+    animation: under-bar-line-anim 1s ease 1 both;
+    animation-delay: 1s;
+    transform: translateY(-18px);
+}
+
+
+
+header img {
+    width: 250px;
+    height: 100px;
+    vertical-align: top;
+    margin-top: -20px;
+}
+
+
+.background-car-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.background-car-name .car-name {
+    position: relative;
+    font-size: 100px;
+    color: transparent;
+    -webkit-text-stroke: 1px #FF8000;
+    font-weight: 800;
+    width: 100%;
+}
+
+.background-car-name .car {
+    position: absolute;
+    top: 130px;
+    transform: scale(0.5);
+    transition: transform 1s;
+}
+
+.background-car-name .car:hover {
+    transform: scale(1);
+    transition: all 1s;
+}
+
+.car-info-block h1,
+.drivers-block h1 {
+    text-align: center;
+    color: #FF8000;
+    text-shadow: 0 0 10px #FF8000;
+    font-weight: 900;
+    margin-top: 0;
+    margin-bottom: 0;
+    letter-spacing: 10px;
+    font-size: 100px;
+}
+
+.car-info-block .the-car-above {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-top: 400px;
+    margin-bottom: 400px;
+}
+
+.car-info-block .button {
+    position: absolute;
+    right: 50px;
+    top: -300px;
+}
+
+.car-info-block .button button {
+    background: rgb(21, 21, 46);
+    transform: scale(2);
+    border-radius: 20px;
+    border: 2px solid #FF8000;
+    text-shadow: none;
+    font-family: 'SbB Papaya', sans-serif;
+    font-size: 7px;
+    width: 100px;
+    height: 30px;
+    margin: 20px;
+    color: #FF8000;
+    font-weight: 700;
+    filter: blur(1px);
+    transition: filter 0.3s;
+}
+
+.car-info-block .button button:hover {
+    filter: blur(0);
+    transition: all 0.3s;
+}
+
+.car-info-block .button button:active {
+    filter: blur(0);
+    text-shadow: 0 0 5px #FF8000;
+    box-shadow: 0 0 10px #FF8000;
+}
+
+/* AI: Показывает все подписи после нажатия кнопки On/Off. */
+.car-info-block .the-car-above.is-active .line-1,
+.car-info-block .the-car-above.is-active .line-2,
+.car-info-block .the-car-above.is-active .line-3,
+.car-info-block .the-car-above.is-active .line-4,
+.car-info-block .the-car-above.is-active .line-5,
+.car-info-block .the-car-above.is-active .line-6,
+.car-info-block .the-car-above.is-active .line-7,
+.car-info-block .the-car-above.is-active .line-8 {
+    opacity: 1;
+}
+
+.car-info-block .the-car-above img {
+    width: 900px;
+    height: 400px;
+    transform: rotate(270deg);
+}
+
+.car-info-block .the-car-above .line-1 {
+    opacity: 0;
+    color: white;
+    border-bottom: 2px solid white;
+    letter-spacing: 3px;
+    position: absolute;
+    left: 70px;
+    right: 750px;
+    top: -190px;
+    font-size: 6px;
+    z-index: -1;
+    transition: opacity 0.3s;
+}
+
+.front-wing {
+    position: absolute;
+    height: 100px;
+    width: 300px;
+    top: -220px;
+}
+
+/* AI: Hover работает только до включения постоянного отображения. */
+.car-info-block .the-car-above:not(.is-active) .front-wing:hover+.line-1 {
+    opacity: 1;
+    transition: all 0.3s;
+    animation: line-anim-3 0.3s linear 1;
+}
+
+
+
+@keyframes line-anim-3 {
+    0% {
+        left: 70px;
+        right: 900px;
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        left: 70px;
+        right: 750px;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+.car-info-block .the-car-above .line-2 {
+    font-size: 6px;
+    opacity: 0;
+    color: white;
+    border-bottom: 2px solid white;
+    position: absolute;
+    left: 170px;
+    letter-spacing: 3px;
+    right: 750px;
+    top: -85px;
+    z-index: -1;
+    transition: opacity 1s;
+}
+
+.tires-1 {
+    position: absolute;
+    height: 110px;
+    width: 60px;
+    left: 425px;
+    top: -100px;
+}
+
+/* AI: Отключает hover для этой зоны после нажатия On/Off. */
+.car-info-block .the-car-above:not(.is-active) .tires-1:hover+.line-2 {
+    opacity: 1;
+    animation: line-anim 0.3s linear 1;
+    transition: all 1s;
+}
+
+@keyframes line-anim {
+    0% {
+        left: 170px;
+        right: 900px;
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        left: 170px;
+        right: 750px;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+.car-info-block .the-car-above .line-3 {
+    font-size: 6px;
+    text-align: right;
+    opacity: 0;
+    color: white;
+    border-bottom: 2px solid white;
+    position: absolute;
+    left: 750px;
+    right: 150px;
+    top: 450px;
+    letter-spacing: 3px;
+    z-index: -1;
+    transition: opacity 0.3s;
+}
+
+.tires-2 {
+    position: absolute;
+    height: 118px;
+    width: 75px;
+    left: 690px;
+    top: 430px;
+    border-radius: 20px;
+}
+
+/* AI: Отключает hover для этой зоны после нажатия On/Off. */
+.car-info-block .the-car-above:not(.is-active) .tires-2:hover+.line-3 {
+    opacity: 1;
+    animation: line-anim-1 0.3s linear 1;
+    transition: all 0.3s;
+}
+
+@keyframes line-anim-1 {
+    0% {
+        left: 900px;
+        right: 150px;
+        opacity: 0;
+    }
+
+    100% {
+        left: 750px;
+        right: 150px;
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+
+.car-info-block .the-car-above .line-4 {
+    font-size: 6px;
+    text-align: right;
+    opacity: 0;
+    color: white;
+    border-bottom: 2px solid white;
+    letter-spacing: 3px;
+    position: absolute;
+    left: 750px;
+    right: 150px;
+    top: -85px;
+    z-index: -1;
+    transition: opacity 0.3s;
+}
+
+.tires-3 {
+    position: absolute;
+    height: 110px;
+    width: 60px;
+    left: 710px;
+    top: -100px;
+}
+
+/* AI: Отключает hover для этой зоны после нажатия On/Off. */
+.car-info-block .the-car-above:not(.is-active) .tires-3:hover+.line-4 {
+    opacity: 1;
+    animation: line-anim-1 0.3s linear 1;
+    transition: all 0.3s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.car-info-block .the-car-above .line-5 {
+    font-size: 6px;
+    opacity: 0;
+    color: white;
+    border-bottom: 2px solid white;
+    position: absolute;
+    left: 170px;
+    right: 750px;
+    letter-spacing: 3px;
+    top: 450px;
+    z-index: -1;
+    transition: opacity 0.3s;
+}
+
+.tires-4 {
+    position: absolute;
+    height: 118px;
+    width: 75px;
+    left: 420px;
+    top: 430px;
+    border-radius: 20px;
+}
+
+/* AI: Отключает hover для этой зоны после нажатия On/Off. */
+.car-info-block .the-car-above:not(.is-active) .tires-4:hover+.line-5 {
+    opacity: 1;
+    animation: line-anim 0.3s linear 1;
+}
+
+
+
+
+
+
+.car-info-block .the-car-above .line-6 {
+    font-size: 6px;
+    opacity: 0;
+    color: white;
+    border-bottom: 2px solid white;
+    position: absolute;
+    left: 170px;
+    right: 615px;
+    top: 130px;
+    letter-spacing: 3px;
+    transition: opacity 0.3s;
+}
+
+.cockpit {
+    position: absolute;
+    height: 100px;
+    width: 70px;
+    left: 560px;
+    top: 120px;
+    border-radius: 20px;
+}
+
+/* AI: Отключает hover для этой зоны после нажатия On/Off. */
+.car-info-block .the-car-above:not(.is-active) .cockpit:hover+.line-6 {
+    opacity: 1;
+    animation: line-anim-2 0.3s linear 1;
+    transition: all 0.3s;
+}
+
+@keyframes line-anim-2 {
+    0% {
+        left: 170px;
+        right: 900px;
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        left: 170px;
+        right: 600px
+    }
+}
+
+
+
+.car-info-block .the-car-above .halo {
+    position: absolute;
+    left: 0;
+    top: -400px;
+}
+
+
+.car-info-block .the-car-above .halo-1 {
+    position: absolute;
+    width: 12px;
+    height: 90px;
+    left: 535px;
+    top: 540px;
+}
+
+.car-info-block .the-car-above .halo-2 {
+    position: absolute;
+    width: 13px;
+    height: 90px;
+    left: 647px;
+    top: 540px;
+}
+
+.car-info-block .the-car-above .halo-3 {
+    position: absolute;
+    border-radius: 30px;
+    width: 13px;
+    height: 40px;
+    left: 635px;
+    top: 510px;
+    transform: rotate(-30deg);
+}
+
+
+.car-info-block .the-car-above .halo-4 {
+    position: absolute;
+    border-radius: 30px;
+    width: 13px;
+    height: 40px;
+    left: 540px;
+    top: 510px;
+    transform: rotate(30deg);
+}
+
+.car-info-block .the-car-above .halo-5 {
+    position: absolute;
+    border-radius: 30px;
+    width: 20px;
+    height: 40px;
+    left: 555px;
+    top: 490px;
+    transform: rotate(50deg);
+}
+
+.car-info-block .the-car-above .halo-6 {
+    position: absolute;
+    border-radius: 30px;
+    width: 20px;
+    height: 40px;
+    left: 615px;
+    top: 490px;
+    transform: rotate(-50deg);
+}
+
+.car-info-block .the-car-above .halo-7 {
+    position: absolute;
+    border-radius: 30px;
+    width: 40px;
+    height: 40px;
+    left: 575px;
+    top: 470px;
+}
+
+.car-info-block .the-car-above .line-7 {
+    font-size: 6px;
+    color: white;
+    border-bottom: 2px solid white;
+    position: absolute;
+    left: 170px;
+    right: 605px;
+    letter-spacing: 3px;
+    top: 80px;
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+
+
+/* AI: Отключает hover для этой зоны после нажатия On/Off. */
+.car-info-block .the-car-above:not(.is-active) .halo:hover+.line-7 {
+    opacity: 1;
+    animation: line-anim 0.3s ease-in-out 1;
+    transition: all 0.3s;
+}
+
+@keyframes line-anim-4 {
+    0% {
+        left: 70px;
+        right: 900px;
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        left: 170px;
+        right: 610px;
+    }
+
+}
+
+
+
+.car-info-block .the-car-above .line-8 {
+    font-size: 6px;
+    opacity: 0;
+    color: white;
+    border-bottom: 2px solid white;
+    position: absolute;
+    left: 70px;
+    letter-spacing: 3px;
+    right: 710px;
+    bottom: -200px;
+    z-index: -1;
+    transition: opacity 0.3s;
+}
+
+.rear-wing {
+    position: absolute;
+    height: 100px;
+    width: 230px;
+    bottom: -240px;
+    right: 490px;
+}
+
+/* AI: Отключает hover для этой зоны после нажатия On/Off. */
+.car-info-block .the-car-above:not(.is-active) .rear-wing:hover+.line-8 {
+    opacity: 1;
+    transition: all 0.3s;
+    animation: line-anim-8 0.3s linear 1;
+}
+
+
+
+@keyframes line-anim-8 {
+    0% {
+        left: 70px;
+        right: 900px;
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        left: 70px;
+        right: 750px;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.drivers-block .drivers-grid {
+    transform: scale(0.7);
+    display: grid;
+    width: 100%;
+    /* ИИ: растягивает сетку по ширине родителя, чтобы она корректно центрировалась внутри блока. */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* ИИ: задаёт две гибкие колонки, чтобы содержимое не выходило за границы. */
+    justify-items: center;
+    /* ИИ: выравнивает изображения по центру каждой колонки. */
+    gap: 600px;
+    margin: 100px auto;
+}
+
+.drivers-block .drivers-grid img {
+    display: block;
+    /* ИИ: убирает лишний строчный зазор под изображениями. */
+    max-width: 100%;
+    /* ИИ: не позволяет изображению быть шире своей колонки. */
+    height: auto;
+    /* ИИ: сохраняет пропорции изображения при изменении ширины. */
+    transform: scale(1.2);
+    transition: transform 0.3s;
+}
+
+.drivers-block .drivers-grid .leclerc {
+    position: relative;
+    z-index: -1;
+    
+}
+
+
+.drivers-block .drivers-grid .leclerc .lec-img:hover,
+.drivers-block .drivers-grid .hamilton .ham-img:hover {
+    transform: scale(1.5);
+    transition: all 0.3;
+}
+
+.drivers-block .drivers-grid .leclerc .driver-name {
+    position: absolute;
+    top: 25%;
+    left: -90px;
+    font-size: 120px;
+    text-shadow: 0 0 10px gray;
+    color: white;
+    font-family: "Birthstone", cursive;
+}
+
+.drivers-block .drivers-grid .leclerc .driver-lastname {
+    position: absolute;
+    top: 38%;
+    text-shadow: 0 0 10px #683808;
+    left: -60px;
+    font-size: 70px;
+    font-weight: 900;
+    color: #FF8000;
+}
+
+.drivers-block .drivers-grid .hamilton {
+    position: relative;
+}
+
+.drivers-block .drivers-grid .hamilton .driver-name {
+    position: absolute;
+    top: 25%;
+    left: -100px;
+    font-size: 120px;
+    color: white;
+    text-shadow: 0 0 10px gray;
+    font-family: "Birthstone", cursive;
+}
+
+.drivers-block .drivers-grid .hamilton .driver-lastname {
+    position: absolute;
+    top: 38%;
+    text-shadow: 0 0 10px #683808;
+    left: -60px;
+    font-size: 70px;
+    font-weight: 900;
+    color: #FF8000;
+    font-family: 'SbB Papaya', sans-serif;
+}
+
+.drivers-block .drivers-grid .leclerc .small-det {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    position: absolute;
+    top: -200px;
+    color: white;
+    font-size: 20px;
+    z-index: -1;
+    box-sizing: border-box;
+}
+
+.drivers-block .drivers-grid .leclerc .small-det .small-line {
+    position: absolute;
+    border: 1px solid white;
+    top: 10px;
+    bottom: 10px;
+    right: 100px;
+}
+
+.drivers-block .drivers-grid .leclerc .small-det .small-line-1 {
+    position: absolute;
+    border: 1px solid white;
+    top: 10px;
+    bottom: 10px;
+    right: 250px;
+}
+
+
+
+
+.drivers-block .drivers-grid .hamilton .small-det {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    position: absolute;
+    top: -200px;
+    color: white;
+    font-size: 20px;
+    z-index: -1;
+    box-sizing: border-box;
+}
+
+.drivers-block .drivers-grid .hamilton .small-det .small-line {
+    position: absolute;
+    border: 1px solid white;
+    top: 10px;
+    bottom: 10px;
+    right: 100px;
+}
+
+.drivers-block .drivers-grid .hamilton .small-det .small-line-1 {
+    position: absolute;
+    border: 1px solid white;
+    top: 10px;
+    bottom: 10px;
+    right: 215px;
+}
+
+
+.home-button {
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+}
+
+.home-button button {
+    font-family: 'SbB Papaya', sans-serif;
+    width: 100%;
+    height: 100px;
+    background: rgb(21, 21, 46);
+    border-radius: 20px;
+    border: 2px solid #FF8000;
+    text-shadow: none;
+    color: #FF8000;
+    font-weight: 700;
+    filter: blur(3px);
+    transition: filter 0.3s;
+    font-size: 30px;
+    letter-spacing: 20px;
+}
+.home-button button:hover {
+    filter: blur(0px);
+    transition: all 0.3s;
+}
+
+.home-button button:active {
+    filter: blur(0);
+    text-shadow: 0 0 5px #FF8000;
+    box-shadow: 0 0 10px #FF8000;
+}
+
+
+
+.under-bar-line-1, .under-bar-line-2, .under-bar-line-3, .under-bar-line-4 {
+    width: 100%;
+    margin: 0 auto;
+    box-shadow: 0 0 10px #FF8000;
+    border: 3px solid #FF8000;
+    animation: under-bar-line-anim 1s ease 1 both;
+    animation-delay: 1s;
+    transform: translateY(-5px);
+}
+
+
+.under-bar-line-adaptive, .hamilton-adaptive, .leclerc-adaptive, .drvivers-block-adaptive,.title-adaptive {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Adaptive*/
+@media (max-width: 576px) {
+
+    body {
+        font-family: 'SbB Papaya', sans-serif;
+    }
+
+.background-car-name .car-name {
+    font-size: 40px;
+    text-align: center;
+    letter-spacing: 9px;
+    width: 100%;
+}
+
+.background-car-name .car {
+    position: absolute;
+    top: 40px;
+    transform: scale(0.3);
+}
+
+.background-car-name .car:hover {
+    position: absolute;
+    top: 60px;
+    transform: scale(0.3);
+}
+
+.car-info-block h1 {
+    margin-top: 100px;
+    margin-bottom: 400px;
+}
+
+.car-info-block h1,
+.drivers-block h1 {
+    font-family: 'SbB Papaya', sans-serif;
+    text-align: center;
+    color: #FF8000;
+    text-shadow: 0 0 10px #FF8000;
+    font-weight: 900;
+    letter-spacing: 10px;
+    font-size: 35px;
+    width: 100%;
+}   
+
+.drivers-block h1 {
+    font-family: 'SbB Papaya', sans-serif;
+    text-align: center;
+    color: #FF8000;
+    text-shadow: 0 0 10px #FF8000;
+    font-weight: 900;
+    margin-top: -250px;
+    margin-bottom: 0;
+    letter-spacing: 10px;
+    font-size: 30px;
+    width: 100%;
+}
+
+
+.under-bar-line-3, .under-bar-line-1 {
+    display: none;
+}
+
+.under-bar-line-2 {
+    transform: translateY(-400px);
+}
+
+.car-info-block .button {
+    position: absolute;
+    left: 130px;
+    top: -400px;
+}
+
+.car-info-block .button button {
+    font-family: 'SbB Papaya', sans-serif;
+    background: rgb(21, 21, 46);
+    transform: scale(4.5);
+    border-radius: 20px;
+    border: 2px solid #FF8000;
+    text-shadow: none;
+    width: 100px;
+    height: 30px;
+    margin: 20px;
+    color: #FF8000;
+    font-weight: 700;
+    filter: blur(1px);
+    transition: filter 0.3s;
+}
+
+.car-info-block .button button:hover {
+    filter: blur(0);
+    transition: all 0.3s;
+}
+
+.car-info-block .button button:active {
+    filter: blur(0);
+    text-shadow: 0 0 5px #FF8000;
+    box-shadow: 0 0 10px #FF8000;
+}
+
+
+.car-info-block .the-car-above {
+    transform: scale(0.5);
+    margin-top: -200px;
+}
+
+.car-info-block .the-car-above .line-1 {
+    font-family: 'SbB Papaya', sans-serif;
+    opacity: 0;
+    color: white;
+    border-bottom: 2px solid white;
+    position: absolute;
+    font-size: 5px;
+    left: -200px;
+    right: 300px;
+    top: -170px;
+    z-index: -1;
+    transition: opacity 0.3s;
+}
+
+.front-wing {
+    position: absolute;
+    height: 125px;
+    width: 350px;
+    top: -240px;
+    left: 23px;
+}
+
+.car-info-block .the-car-above:not(.is-active) .front-wing:hover+.line-1 {
+    opacity: 1;
+    transition: all 0.3s;
+    animation: line-anim-adaptive-1 0.3s linear 1;
+}
+
+
+
+.car-info-block .the-car-above .line-2 {
+    opacity: 0;
+    color: white;
+    font-family: 'SbB Papaya', sans-serif;
+    border-bottom: 2px solid white;
+    position: absolute;
+    left: -200px;
+    right: 200px;
+    top: -70px;
+    font-size: 5px;
+    z-index: -1;
+    transition: opacity 0.3s;
+}
+
+.tires-1 {
+    position: absolute;
+    height: 125px;
+    width: 60px;
+    top: -110px;
+    left: 23px;
+}
+
+/* AI: Отключает hover для этой зоны после нажатия On/Off. */
+.car-info-block .the-car-above:not(.is-active) .tires-1:hover+.line-2 {
+    opacity: 1;
+    animation: line-anim 0.3s linear 1;
+    transition: all 1s;
+}
+
+
+
+.car-info-block .the-car-above .line-3 {
+    font-family: 'SbB Papaya', sans-serif;
+    text-align: left;
+    opacity: 0;
+    color: white;
+    border-bottom: 2px solid white;
+    position: absolute;
+    left: -200px;
+    right: 200px;
+    bottom: -100px;
+    font-size: 5px;
+    z-index: -1;
+    transition: opacity 0.3s;
+}
+
+.tires-2 {
+    position: absolute;
+    height: 130px;
+    width: 70px;
+    left: 20px;
+    bottom: 30px;
+}
+
+/* AI: Отключает hover для этой зоны после нажатия On/Off. */
+.car-info-block .the-car-above:not(.is-active) .tires-2:hover+.line-3 {
+    opacity: 1;
+    transition: all 0.3s;
+}
+
+
+.car-info-block .the-car-above .line-4 {
+    text-align: right;
+    font-family: 'SbB Papaya', sans-serif;
+    opacity: 0;
+    color: white;
+    border-bottom: 2px solid white;
+    position: absolute;
+    left: 305px;
+    top: -70px;
+    right: -200px;
+    z-index: -1;
+    transition: opacity 0.3s;
+}
+
+.tires-3 {
+    position: absolute;
+    height: 130px;
+    width: 70px;
+    left: 305px;
+    top: -110px;
+}
+
+/* AI: Отключает hover для этой зоны после нажатия On/Off. */
+.car-info-block .the-car-above:not(.is-active) .tires-3:hover+.line-4 {
+    opacity: 1;
+    transition: all 0.3s;
+}
+
+.car-info-block .the-car-above .line-5 {
+    font-family: 'SbB Papaya', sans-serif;
+    opacity: 0;
+    text-align: right;
+    color: white;
+    border-bottom: 2px solid white;
+    position: absolute;
+    left: 305px;
+    bottom: -100px;
+    right: -200px;
+    z-index: -1;
+    transition: opacity 0.3s;
+}
+
+.tires-4 {
+    position: absolute;
+    height: 130px;
+    width: 70px;
+    left: 300px;
+    bottom: 220px;
+}
+
+/* AI: Отключает hover для этой зоны после нажатия On/Off. */
+.car-info-block .the-car-above:not(.is-active) .tires-4:hover+.line-5 {
+    opacity: 1;
+    animation: line-anim 0.3s linear 1;
+}
+
+
+
+
+
+
+
+
+.car-info-block .the-car-above .line-6 {
+    opacity: 0;
+    color: white;
+    border-bottom: 2px solid white;
+    position: absolute;
+     left: -200px;
+     font-family: 'SbB Papaya', sans-serif;
+    right: 200px;
+    top: 130px;
+    transition: opacity 0.3s;
+}
+
+.cockpit {
+    position: absolute;
+    height: 100px;
+    width: 70px;
+    left: 160px;
+    top: 130px;
+    border-radius: 20px;
+}
+
+/* AI: Отключает hover для этой зоны после нажатия On/Off. */
+.car-info-block .the-car-above:not(.is-active) .cockpit:hover+.line-6 {
+    opacity: 1;
+    transition: all 0.3s;
+}
+
+
+.car-info-block .the-car-above .halo {
+            position: absolute;
+            left: -400px;
+            
+}
+
+
+.car-info-block .the-car-above .halo-1 {
+    position: absolute;
+    width: 12px;
+    height: 90px;
+    left: 535px;
+    top: 540px
+}
+
+.car-info-block .the-car-above .halo-2 {
+    position: absolute;
+    width: 13px;
+    height: 90px;
+    left: 647px;
+    top: 540px
+}
+
+.car-info-block .the-car-above .halo-3 {
+    position: absolute;
+    border-radius: 30px;
+    width: 13px;
+    height: 40px;
+    left: 635px;
+    top: 510px;
+    transform: rotate(-30deg);
+}
+
+
+.car-info-block .the-car-above .halo-4 {
+    position: absolute;
+    border-radius: 30px;
+    width: 13px;
+    height: 40px;
+    left: 540px;
+    top: 510px;
+    transform: rotate(30deg);
+}
+
+.car-info-block .the-car-above .halo-5 {
+    position: absolute;
+    border-radius: 30px;
+    width: 20px;
+    height: 40px;
+    left: 555px;
+    top: 490px;
+    transform: rotate(50deg);
+}
+
+.car-info-block .the-car-above .halo-6 {
+    position: absolute;
+    border-radius: 30px;
+    width: 20px;
+    height: 40px;
+    left: 615px;
+    top: 490px;
+    transform: rotate(-50deg);
+}
+
+.car-info-block .the-car-above .halo-7 {
+    position: absolute;
+    border-radius: 30px;
+    width: 40px;
+    height: 40px;
+    left: 575px;
+    top: 470px;
+}
+
+.car-info-block .the-car-above .line-7 {
+    font-family: 'SbB Papaya', sans-serif;
+    color: white;
+    border-bottom: 2px solid white;
+    position: absolute;
+    left: -200px;
+    right: 200px;
+    top: 90px;
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+
+
+/* AI: Отключает hover для этой зоны после нажатия On/Off. */
+.car-info-block .the-car-above:not(.is-active) .halo:hover+.line-7 {
+    opacity: 1;
+    animation: line-anim 0.3s ease-in-out 1;
+    transition: all 0.3s;
+}
+
+.car-info-block .the-car-above .line-8 {
+    font-family: 'SbB Papaya', sans-serif;
+    color: white;
+    text-align: left;
+    border-bottom: 2px solid white;
+    position: absolute;
+    left: -200px;
+    right: 200px;
+    bottom: -200px;
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+
+.rear-wing {
+    right: 90px;
+}
+
+
+/* AI: Отключает hover для этой зоны после нажатия On/Off. */
+.car-info-block .the-car-above:not(.is-active) .rear-wing:hover+.line-7 {
+    opacity: 1;
+    animation: line-anim 0.3s ease-in-out 1;
+    transition: all 0.3s;
+}
+
+
+
+
+
+.drivers-block {
+    display: none;
+}
+
+
+
+.drivers-block-adaptive{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+}
+
+.drivers-block-adaptive h1 {
+    display: block;
+    font-family: 'SbB Papaya', sans-serif;
+    text-align: center;
+    color: #FF8000;
+    text-shadow: 0 0 10px #FF8000;
+    font-weight: 900;
+    margin-top: -250px;
+    margin-bottom: 60px;
+    letter-spacing: 10px;
+    font-size: 30px;
+    width: 100%;
+}
+
+.under-bar-line-adaptive {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    box-shadow: 0 0 10px #FF8000;
+    border: 3px solid #FF8000;
+    transform: translateY(-70px);
+    animation: under-bar-line-anim 1s ease 1 both;
+}
+
+.drivers-block-adaptive .leclerc-adaptive {
+    position: relative;
+    display: block;
+}
+
+.drivers-block-adaptive .leclerc-adaptive .lec-lec-adaptive {
+    width: 250px;
+    margin: 0 auto;
+    height: 720px;
+}
+
+.drivers-block-adaptive .leclerc-adaptive .driver-name-adaptive {
+    position: absolute;
+    top: 29.5%;
+    left: -70px;
+    font-size: 85px;
+    text-shadow: 0 0 10px gray;
+    color: white;
+    font-family: "Birthstone", cursive;
+}
+
+.drivers-block-adaptive .leclerc-adaptive .driver-lastname-adaptive {
+    position: absolute;
+    top: 40%;
+    text-shadow: 0 0 10px #6e3f10;
+    left: -10px;
+    font-size: 30px;
+    font-weight: 900;
+    color: #FF8000;
+    font-family: 'SbB Papaya', sans-serif;
+}
+
+.drivers-block-adaptive .leclerc-adaptive .small-det-adaptive {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: -30px;
+    left: 80px;
+    z-index: -1;
+    transform: scale(1.2);
+}
+
+.drivers-block-adaptive .leclerc-adaptive .number-adaptive img {
+    width: 100%;
+    height: 100%;
+}
+
+.drivers-block-adaptive .leclerc-adaptive .number-adaptive {
+    padding-right: 10px;
+    color: white;
+    border-right: 1px solid white;
+    border-right-width: 2px;
+    z-index: -1;
+}
+
+.drivers-block-adaptive .leclerc-adaptive .flag-adaptive img {
+    width: 100%;
+    height: 100%;
+}
+
+.drivers-block-adaptive .leclerc-adaptive .flag-adaptive {
+    width: 100px;
+    height: 50px;
+    z-index: -1;
+    padding-left: 15px;
+}
+
+.drivers-block-adaptive .hamilton-adaptive {
+    display: block;
+    position: relative;
+}
+
+.drivers-block-adaptive .hamilton-adaptive .ham-ham-adaptive {
+    width: 250px;
+    margin: 0 auto;
+    height: 720px;
+}
+
+.drivers-block-adaptive .hamilton-adaptive .driver-name-adaptive {
+    position: absolute;
+    top: 29.5%;
+    left: -70px;
+    font-size: 85px;
+    text-shadow: 0 0 10px gray;
+    color: white;
+    font-family: "Birthstone", cursive;
+}
+
+.drivers-block-adaptive .hamilton-adaptive .driver-lastname-adaptive {
+    position: absolute;
+    top: 40%;
+    text-shadow: 0 0 10px #6e3f10;
+    left: -10px;
+    font-size: 30px;
+    font-weight: 900;
+    color: #FF8000;
+    font-family: 'SbB Papaya', sans-serif;
+}
+
+.drivers-block-adaptive .hamilton-adaptive .small-det-adaptive {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: -30px;
+    left: 70px;
+    z-index: -1;
+    transform: scale(1.2);
+}
+
+.drivers-block-adaptive .hamilton-adaptive .number-adaptive {
+    padding-right: 10px;
+    color: white;
+    border-right: 1px solid white;
+    border-right-width: 2px;
+    z-index: -1;
+}
+
+.drivers-block-adaptive .hamilton-adaptive .flag-adaptive img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.drivers-block-adaptive .hamilton-adaptive .flag-adaptive {
+    width: 100px;
+    height: 50px;
+    z-index: -1;
+    padding-left: 15px;
+}
+
+.under-bar-line-adaptive-1 {
+    width: 30%;
+    margin: 0 auto;
+    box-shadow: 0 0 10px #FF8000;
+    border: 3px solid #FF8000;
+    transform: translateY(-70px);
+    animation: under-bar-line-anim-adaptive 1s ease 1 both;
+}
+
+@keyframes under-bar-line-anim-adaptive {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        width: 80%;
+    }
+
+}
+
+.home-button button {
+    font-size: 20px;
+    letter-spacing: 5px;
+}
+
+}
